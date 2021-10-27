@@ -2,17 +2,25 @@ swagger : "2.0"
 info : 
   title : Klimb Assignment
   description : Assignment to convert an excel file to json then save into database
-  servers : 
-    -url : "http://localhost:8080/"
+servers : 
+  - url : "http://localhost:8080/"
     description : Local server for test purpose
-schemes : [http,https]
+
 
 paths:
   /api/v1/getUsers:
     get : 
       summary : Returns all user data
       description : It's a get method which fetch all data form data mongodb
-     
+      responses :
+        200 :
+          content-type :
+            application/json :
+              schema :
+                type : object
+                description : Return json data of an array
+                item :
+                  type : string
 
   /api/v1/create_user:
     post : 
@@ -24,4 +32,13 @@ paths:
           type : file
       summary :  This routes convert excel file to json data
       description : Here first we will take a file then we will convert excel data into json format then we will save data into mongodb.
+      responses :
+        200 :
+
+          schema :
+
+            type : object
+            description : Return json data of an array
+              item :
+                type : string
       
